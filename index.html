@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Congo Bridge Consulting | www.congobridge.cd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root { --midnight: #002366; --gold: #D4AF37; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; overflow-x: hidden; }
+        
+        /* Hero avec animation */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,35,102,0.7), rgba(0,35,102,0.7)), 
+                        url('https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; animation: fadeInUp 1s; }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: var(--midnight);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .btn-gold:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+
+        /* Section Statistique Interactive */
+        .stats { display: flex; justify-content: space-around; padding: 50px; background: var(--midnight); color: white; }
+        .stat-item h2 { color: var(--gold); font-size: 2.5rem; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <style>
+        /* ... (votre code précédent) ... */
+    
+        .hero {
+            /* L'IMAGE DE FOND EST ICI */
+            background: linear-gradient(rgba(0, 35, 102, 0.75), rgba(0, 35, 102, 0.75)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1600&q=80');
+            
+            background-size: cover; /* L'image couvre tout l'écran */
+            background-position: center; /* L'image est centrée */
+            background-attachment: fixed; /* Effet de parallaxe élégant au scroll */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 10%;
+        }
+    
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Ombre pour plus de lisibilité */
+            animation: fadeInUp 1s;
+        }
+    
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+    </style>
+    
+    <section class="hero">
+        <h1 class="animate__animated animate__fadeInDown">Bâtir le Pont entre Stratégie et Impact</h1>
+        <p class="animate__animated animate__fadeInUp">Le premier cabinet conseil en RDC alliant rigueur clinique et gestion de projet certifiée pour sécuriser vos investissements.</p>
+        <div style="display: flex; gap: 20px;">
+            <a href="#quiz-section" class="btn-gold">Lancer le Diagnostic Flash</a>
+            <a href="#contact" style="color: white; border: 2px solid white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold;">Nous contacter</a>
+        </div>
+    </section>
+
+    <section id="quiz-section" style="padding: 60px 5%; background: #f9f9f9; text-align: center;">
+        <h2 style="color: #002366; margin-bottom: 10px;">Votre projet est-il sous contrôle ?</h2>
+        <p style="color: #666; margin-bottom: 30px;">Faites le test en 30 secondes et recevez votre score de santé opérationnelle.</p>
+    
+        <div id="quiz-container" style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 5px solid #D4AF37;">
+            <div id="question-box">
+                <h3 id="question-text" style="color: #002366; min-height: 60px;">Chargement du diagnostic...</h3>
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
+                    <button onclick="nextQuestion(0)" style="background: #e0e0e0; border: none; padding: 15px 40px; border-radius: 5px; cursor: pointer; font-weight: bold;">NON</button>
+                    <button onclick="nextQuestion(1)" style="background: #D4AF37; border: none; padding: 15px 40px; border-radius: 5px; cursor: pointer; color: #002366; font-weight: bold;">OUI</button>
+                </div>
+            </div>
+            <div id="result-box" style="display: none;">
+                <h2 id="score-text" style="color: #D4AF37; font-size: 3rem; margin: 0;">0/5</h2>
+                <p id="feedback-text" style="font-weight: bold; margin: 20px 0;"></p>
+                <p>Votre projet nécessite une sécurisation immédiate.</p>
+                <a href="https://wa.me/243XXXXXXXXX" style="display: inline-block; background: #002366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; margin-top: 20px;">Réserver mon Diagnostic Flash 48h</a>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        const questions = [
+            "Votre planning est-il mis à jour chaque semaine ?",
+            "Connaissez-vous le coût exact d'une journée de retard ?",
+            "Utilisez-vous un outil digital de suivi en temps réel ?",
+            "Vos équipes ont-elles des indicateurs (KPI) clairs ?",
+            "Avez-vous une liste des 5 risques majeurs actualisée ?"
+        ];
+    
+        let currentStep = 0;
+        let score = 0;
+    
+        function nextQuestion(val) {
+            score += val;
+            currentStep++;
+            
+            if (currentStep < questions.length) {
+                document.getElementById('question-text').innerText = questions[currentStep];
+            } else {
+                showResult();
+            }
+        }
+    
+        function showResult() {
+            document.getElementById('question-box').style.display = 'none';
+            const resultBox = document.getElementById('result-box');
+            resultBox.style.display = 'block';
+            document.getElementById('score-text').innerText = score + "/5";
+            
+            let feedback = "";
+            if(score <= 2) feedback = "⚠️ Alerte : Votre projet est en zone de risque critique.";
+            else if(score <= 4) feedback = "🧐 Attention : Des goulots d'étranglement freinent votre impact.";
+            else feedback = "✅ Excellent : Mais restez vigilant sur l'optimisation digitale.";
+            
+            document.getElementById('feedback-text').innerText = feedback;
+        }
+    
+        // Initialisation
+        document.getElementById('question-text').innerText = questions[0];
+    </script>
+
+    <section style="padding: 80px 5%; background: white;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="color: #002366; font-size: 2.5rem;">Pourquoi nous faire confiance ?</h2>
+            <div style="width: 80px; height: 5px; background: #D4AF37; margin: 20px auto;"></div>
+        </div>
+    
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            
+            <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 40px; margin-bottom: 20px;">🏥</div>
+                <h3 style="color: #002366;">15 Ans d'Expérience</h3>
+                <p style="color: #666; line-height: 1.6;">Spécialisation dans les secteurs de haute précision où la gestion du temps et des ressources est une question de survie.</p>
+            </div>
+    
+            <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 40px; margin-bottom: 20px;">🎓</div>
+                <h3 style="color: #002366;">Rigueur Doctorale</h3>
+                <p style="color: #666; line-height: 1.6;">Une approche analytique basée sur le Management Stratégique pour résoudre les problèmes structurels complexes.</p>
+            </div>
+    
+            <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 40px; margin-bottom: 20px;">📜</div>
+                <h3 style="color: #002366;">Certification Mondiale</h3>
+                <p style="color: #666; line-height: 1.6;">Maîtrise des standards Google Project Management pour un suivi digital et transparent de vos chantiers.</p>
+            </div>
+    
+        </div>
+    
+        <div style="margin-top: 60px; background: #f4f4f4; padding: 40px; border-left: 10px solid #D4AF37; border-radius: 5px;">
+            <p style="font-style: italic; font-size: 1.2rem; color: #333;">
+                "Congo Bridge Consulting n'est pas seulement un cabinet de construction. C'est l'assurance qu'un œil d'expert veille sur chaque dollar investi et chaque jour de votre calendrier."
+            </p>
+            <p style="font-weight: bold; color: #002366; margin-top: 10px;">— Le Fondateur, Doctorant & Expert certifié Google PM</p>
+        </div>
+    </section>
+
+    <section id="contact" style="padding: 80px 5%; background: #002366; color: white; text-align: center;">
+        <h2 style="color: #D4AF37; font-size: 2.5rem; margin-bottom: 20px;">Prêt à construire le pont vers votre succès ?</h2>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px auto; opacity: 0.9;">
+            Que vous soyez une institution publique ou un investisseur privé, nous sommes prêts à sécuriser votre prochain projet.
+        </p>
+    
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+            
+            <a href="https://wa.me/243XXXXXXXXX?text=Bonjour%20Congo%20Bridge,%20je%20souhaite%20un%20diagnostic%20flash%20pour%20mon%20projet." 
+               style="background: #25D366; color: white; text-decoration: none; padding: 20px 40px; border-radius: 50px; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s;">
+                <span style="font-size: 1.5rem;">💬</span> Discuter sur WhatsApp
+            </a>
+    
+            <a href="mailto:contact@congobridge.cd" 
+               style="background: transparent; color: white; border: 2px solid #D4AF37; text-decoration: none; padding: 20px 40px; border-radius: 50px; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s;">
+                <span style="font-size: 1.5rem;">📩</span> Envoyer un Email
+            </a>
+        </div>
+    
+        <div style="margin-top: 60px; font-size: 0.9rem; opacity: 0.7;">
+            <p>📍 Siège social : Kinshasa, Gombe, RDC</p>
+            <p>🌐 www.congobridge.cd | Expert certifié Google PM & Doctorant en Management</p>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat-item"><h2>15+</h2><p>Années d'Expertise</p></div>
+        <div class="stat-item"><h2>48h</h2><p>Délai Diagnostic</p></div>
+        <div class="stat-item"><h2>100%</h2><p>Rigueur Opérationnelle</p></div>
+    </div>
+
+    <a href="https://wa.me/243XXXXXXXXX" style="position:fixed; bottom:20px; right:20px; background:#25d366; color:white; padding:15px; border-radius:50%; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index:1000;">
+        WA
+    </a>
+
+</body>
+</html>
